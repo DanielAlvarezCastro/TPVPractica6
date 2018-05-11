@@ -32,7 +32,8 @@ void GunInputComponent::shoot(Fighter* o) {
 	Vector2D bulletPoition = o->getPosition()
 			+ Vector2D(o->getWidth() / 2, o->getHeight() / 2)
 			+ (o->getDirection() * ((o->getHeight() / 2) + 2));
-	Vector2D bulletVelocity = o->getDirection()*std::max(o->getVelocity().magnitude() * 2, 2.0);
+	Vector2D bulletVelocity = o->getDirection()
+			* std::max(o->getVelocity().magnitude() * 2, 2.0);
 	FighterIsShootingMsg msg = { o->getId(), bulletPoition, bulletVelocity };
 	send(&msg);
 }
